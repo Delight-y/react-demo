@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "jsx": "react", // 在.tsx文件中支持jsx
+        "target": "es6",
+        "rootDir": "src",
+        "outDir": "./dist",
+        "module": "ESNext",
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "declaration": true, // 生成相应的.d.ts文件
+        "allowJs": true,
+        "checkJs": true,
+        "moduleResolution": "Node", // 将模块解析模式设置为node.js解析模式
+        "allowSyntheticDefaultImports": true // 允许对不包含默认导出的模块使用默认导出
+    },
+    "include": ["./src/**/*"],
+    // 不进行类型检查的文件
+    "exclude": ["node_modules", "dist"]
+}
