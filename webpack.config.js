@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 拆分css 以外链方式引入到header中
 
 module.exports = {
-    mode: "development", // 默认开发环境
+    mode: 'development', // 默认开发环境
     entry: path.resolve(__dirname, './src/index.tsx'), // 入口文件\
     // 打包出口文件
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'js/[name].[contenthash:8].bundle.js',
         // webpack5支持clean属性配置 不需要再去依赖其他plugin配置
-        clean: true, // 清除掉之前的bundle 
+        clean: true, // 清除掉之前的bundle
     },
     devServer: {
         port: 9090,
@@ -20,17 +20,30 @@ module.exports = {
         rules: [
             {
                 test: /\.(tsx?|js)$/,
-                use: 'ts-loader',
-                include: /src/, 
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true, // 使用默认目录缓存Loader执行结果 提升webpack打包速率
+                            // 也可以在.babelrc中配置
+                            presets: [
+                                '@babel/preset-env',
+                                '@babel/preset-react',
+                                '@babel/preset-typescript',
+                            ],
+                            plugins: ['@babel/plugin-transform-runtime'],
+                        },
+                    },
+                ],
+                include: /src/,
             },
             {
-                test: /\.css$/,
-                exclude: [/node_modules/],
-                // css-loader对css文件进行合并处理等 
+                test: /\.(css|scss)$/,
+                // css-loader对css文件进行合并处理等
                 // style-loader用于处理的css文件以style标签的形式嵌入到html页面中
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
-        ]
+        ],
     },
     plugins: [
         // 将bundle.js自动挂载到index.html
