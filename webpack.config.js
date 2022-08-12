@@ -43,6 +43,21 @@ module.exports = {
                 // style-loader用于处理的css文件以style标签的形式嵌入到html页面中
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
+            // 打包静态资源 webpack5之前主要用file-loader跟url-loader
+            {
+                test: /\.(png|jpg|gif|jpeg|webp|svg)$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/images/[hash][ext][query]',
+                },
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/fonts/[hash][ext][query]',
+                },
+            },
         ],
     },
     plugins: [
