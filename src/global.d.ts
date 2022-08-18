@@ -3,3 +3,4 @@ declare module '*.css' {
     export default style
 }
 declare module '*.scss'
+declare module '*.tsx'

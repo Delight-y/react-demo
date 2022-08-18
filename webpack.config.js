@@ -76,6 +76,8 @@ module.exports = {
         alias: {
             '@': path.resolve(__dirname, './src'),
             '@styles': path.resolve(__dirname, './src/styles'),
+            '@config': path.resolve(__dirname, './src/config'),
+            '@service': path.resolve(__dirname, './src/service')
         },
         extensions: ['.tsx', '.js', '.jsx'], // 自动解析的扩展 用户在使用时可以不用带扩展名eg: import file from @/to/file
     },
