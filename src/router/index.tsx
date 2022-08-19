@@ -1,11 +1,9 @@
 /**
  * @description 路由文件配置
  */
-import Login from '@views/Login.tsx'
-import Hello from '@views/Hello.tsx'
-import Home from '@views/Home.tsx'
 import React, { ReactComponentElement } from 'react'
 import { Navigate } from 'react-router-dom'
+import LazyWrap from '@components/LazyWrap.tsx'
 
 interface Router {
     name?: string
@@ -18,7 +16,7 @@ interface Router {
 const globalRoutes: Array<Router> = [
     {
         path: '/login',
-        element: <Login />,
+        element: <LazyWrap path="Login" />,
     },
     {
         // 缺省页面
@@ -35,11 +33,11 @@ const mainRoutes: Array<Router> = [
     {
         // 首頁
         path: '/',
-        element: <Home />,
+        element: <LazyWrap path="Home" />,
         children: [
             {
                 path: '/hello',
-                element: <Hello />,
+                element: <LazyWrap path="Hello" />,
             },
         ],
     },
