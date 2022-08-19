@@ -1,1 +1,12 @@
-{}
+{
+    "plugins": [
+        [
+            "import", // 按需加载
+            {
+                "libraryName": "antd",
+                "libraryDirectory": "es",
+                "style": "css" // 这里我们不使用less 就设置为css了
+            }
+        ]
+    ]
+}

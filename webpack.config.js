@@ -37,11 +37,33 @@ module.exports = {
                 ],
                 include: /src/,
             },
+            // 用于解析antd样式文件
+            {
+                test: /\.css$/,
+                include: [/node_modules/],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            // 用于解析非antd相关样式文件
             {
                 test: /\.(css|scss)$/,
+                exclude: [/node_modules/], // 非antd
                 // css-loader对css文件进行合并处理等
                 // style-loader用于处理的css文件以style标签的形式嵌入到html页面中
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            // 启用css module
+                            modules: {
+                                auto: /\.module\./, // 仅业务页面相关样式开启
+                                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                            },
+                        },
+                    },
+                    'postcss-loader',
+                    'sass-loader',
+                ],
             },
             // 打包静态资源 webpack5之前主要用file-loader跟url-loader
             {
@@ -77,7 +99,10 @@ module.exports = {
             '@': path.resolve(__dirname, './src'),
             '@styles': path.resolve(__dirname, './src/styles'),
             '@config': path.resolve(__dirname, './src/config'),
-            '@service': path.resolve(__dirname, './src/service')
+            '@services': path.resolve(__dirname, './src/services'),
+            '@router': path.resolve(__dirname, './src/router'),
+            '@views': path.resolve(__dirname, './src/views'),
+            '@components': path.resolve(__dirname, './src/components'),
         },
         extensions: ['.tsx', '.js', '.jsx'], // 自动解析的扩展 用户在使用时可以不用带扩展名eg: import file from @/to/file
     },
