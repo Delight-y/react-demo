@@ -16,7 +16,7 @@ const LazyWrap: FC<lazyWarpProps> = ({ path }) => {
     const LazyComponent = lazy(() => import(`../views/${path}`))
     return (
         // 渲染lazy组件
-        <Suspense>
+        <Suspense fallback={<div> Loading.... </div>}>
             <LazyComponent />
         </Suspense>
     )
