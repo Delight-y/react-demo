@@ -33,13 +33,13 @@ const mainRoutes: Array<Router> = [
     {
         // 首頁
         path: '/',
+        name: '首页', 
         element: <LazyWrap path="Home" />,
-        children: [
-            {
-                path: '/hello',
-                element: <LazyWrap path="Hello" />,
-            },
-        ],
+    },
+    {
+        path: '/hello',
+        name: '测试',
+        element: <LazyWrap path="Hello" />,
     },
 ]
 
@@ -65,4 +65,4 @@ function transformRoutes(routeList = router) {
 }
 
 router = transformRoutes(router)
-export default router
+export { router, mainRoutes }

@@ -1,0 +1,81 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &.flex-wrap {
+        flex-wrap: wrap;
+    }
+    &.direction-column {
+        flex-direction: column;
+    }
+    &.justify-start {
+        justify-content: flex-start;
+    }
+    &.justify-between {
+        justify-content: space-between;
+    }
+    &.justify-around {
+        justify-content: space-around;
+    }
+    &.justify-center {
+        justify-content: center;
+    }
+    &.justify-right {
+        justify-content: flex-end;
+    }
+    &.y-top {
+        align-items: flex-start;
+    }
+    &.y-bottom {
+        align-items: flex-end;
+    }
+}
+
+/*  盒子间距样式 以8的倍数递增 */
+$offset: (
+    tiny: 4,
+    mini: 8,
+    micro: 10,
+    little: 12,
+    small: 16,
+    medium: 24,
+    offset28: 28,
+    big: 32,
+    offset40: 40,
+    offset56: 56,
+    huge: 152,
+);
+$direction: top, bottom, left, right;
+
+@each $key, $value in $offset {
+    @each $i in $direction {
+        .padding-#{$i}-#{$key} {
+            padding-#{$i}: $value + px;
+        }
+        .margin-#{$i}-#{$key} {
+            margin-#{$i}: $value + px;
+        }
+    }
+    .padding-#{$key} {
+        padding: $value + px;
+    }
+    .padding-lr-#{$key} {
+        padding-left: $value + px;
+        padding-right: $value + px;
+    }
+    .padding-tb-#{$key} {
+        padding-top: $value + px;
+        padding-bottom: $value + px;
+    }
+    .margin-#{$key} {
+        margin: $value + px;
+    }
+    .margin-lr-#{$key} {
+        margin-left: $value + px;
+        margin-right: $value + px;
+    }
+    .margin-tb-#{$key} {
+        margin-top: $value + px;
+        margin-bottom: $value + px;
+    }
+}

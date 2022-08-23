@@ -1,4 +1,4 @@
-import router from './router'
+import { router }  from './router'
 import { useRoutes } from 'react-router-dom'
 const App = () => {
     // 引入路由
