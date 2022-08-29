@@ -4,9 +4,10 @@
 import React, { ReactComponentElement } from 'react'
 import { Navigate } from 'react-router-dom'
 import LazyWrap from '@components/LazyWrap.tsx'
+import Main from '../views/Main'
 
 interface Router {
-    name?: string
+    label?: string
     path: string
     children?: Array<Router>
     element: ReactComponentElement<any>
@@ -31,15 +32,21 @@ function NotFound() {
 // 主路由->后续接口中动态获取
 const mainRoutes: Array<Router> = [
     {
-        // 首頁
+        // 页面入口
         path: '/',
-        name: '首页', 
-        element: <LazyWrap path="Home" />,
-    },
-    {
-        path: '/hello',
-        name: '测试',
-        element: <LazyWrap path="Hello" />,
+        element: <Main />,
+        children: [
+            {
+                path: '/home',
+                label: '首页',
+                element: <LazyWrap path="Home" />,
+            },
+            {
+                path: '/hello',
+                label: '测试',
+                element: <LazyWrap path="Hello" moduleName="test" />,
+            },
+        ],
     },
 ]
 
@@ -50,10 +57,6 @@ function transformRoutes(routeList = router) {
     routeList.forEach(route => {
         const obj = { ...route }
         if (route.path === undefined) return
-        // 页面重定向
-        if (route.redirect) {
-            obj.element = <Navigate to={obj.path} replace={true} />
-        }
         // 如果存在嵌套路由
         if (obj.children) {
             // 递归处理子路由
