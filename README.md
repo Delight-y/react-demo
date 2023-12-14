@@ -1,7 +1,6 @@
+**base分支**为框架搭建代码，不涉及业务代码
 # react-demo
 react项目框架搭建
-
-**base分支**为框架搭建代码，不涉及业务代码
 
 ```
 当前项目主要采用webpack5+react18+typescript进行框架搭建
