@@ -103,6 +103,7 @@ module.exports = {
             '@router': path.resolve(__dirname, './src/router'),
             '@views': path.resolve(__dirname, './src/views'),
             '@components': path.resolve(__dirname, './src/components'),
+            '@assets': path.resolve(__dirname, './src/assets'),
         },
         extensions: ['.tsx', '.js', '.jsx'], // 自动解析的扩展 用户在使用时可以不用带扩展名eg: import file from @/to/file
     },

@@ -1,7 +1,7 @@
+/* flex 布局*/
 .flex {
     display: flex;
     flex-direction: row;
-    align-items: center;
     &.flex-wrap {
         flex-wrap: wrap;
     }
@@ -22,6 +22,9 @@
     }
     &.justify-right {
         justify-content: flex-end;
+    }
+    &.align-center {
+        align-items: center;
     }
     &.y-top {
         align-items: flex-start;

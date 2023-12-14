@@ -1,0 +1,15 @@
+// 重置ant-menu样式
+.ant-layout-header .ant-menu {
+    line-height: 70px !important;
+}
+.ant-menu.ant-menu-dark {
+    .ant-menu-item {
+        color: #ccc !important;
+        background-color: #242424;
+    }
+    .ant-menu-item-selected,
+    .ant-menu-item-active {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+}

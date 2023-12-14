@@ -4,3 +4,7 @@ declare module '*.css' {
 }
 declare module '*.scss'
 declare module '*.tsx'
+declare module '*.png' {
+    const value: any;
+    export default value
+}

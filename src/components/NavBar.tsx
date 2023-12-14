@@ -26,7 +26,7 @@ export default function NavBar(props: any) {
      */
     // 每次切换路由，获取当前最新的pathname,并赋给menu组件
     useEffect(() => {
-        // 路由重定向
+        // 初始化路由重定向
         if (location.pathname === '/') {
             navigate('/home')
         }
@@ -39,7 +39,8 @@ export default function NavBar(props: any) {
     return (
         <div>
             <Menu
-                mode="inline"
+                mode="horizontal"
+                theme="dark"
                 selectedKeys={[menuSelect]}
                 items={navData}
                 onClick={onclick}
