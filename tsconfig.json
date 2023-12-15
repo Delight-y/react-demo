@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "jsx": "react", // 在.tsx文件中支持jsx
+        "jsx": "react-jsx", // 在.tsx文件中支持jsx
         "target": "es6",
         "rootDir": "src",
         "outDir": "./dist",
