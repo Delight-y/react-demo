@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-12-13 11:17:30
  * @Description: 主页
- * @LastEditTime: 2023-12-15 18:17:03
+ * @LastEditTime: 2023-12-19 18:14:54
  */
 import React from 'react'
 import NavBar from '@components/NavBar.tsx'
@@ -18,6 +18,13 @@ export default class Main extends React.Component {
     get leftNav() {
         return mainRoutes
     }
+    state = {
+        iconLeft: 271,
+    }
+    // 接收子组件数据
+    menuChange = (left) => {
+        this.setState({ iconLeft: left })
+    }
     render(): React.ReactNode {
         const { Header, Content } = Layout
         return (
@@ -30,7 +37,7 @@ export default class Main extends React.Component {
                         </h1>
                     </div>
                     {/* 导航栏 */}
-                    <NavBar leftNav={this.leftNav}></NavBar>
+                    <NavBar leftNav={this.leftNav} menuChange={this.menuChange}></NavBar>
                     <div style={{ height: '32px' }} className={'flex align-center'}>
                         <Input
                             className={[header.search, header.w160].join(' ')}
@@ -49,7 +56,7 @@ export default class Main extends React.Component {
                     </div>
                 </Header>
                 <Header className={header.subHeader}>
-                    <CaretUpOutlined className={header.cor} />
+                    <CaretUpOutlined className={header.cor} style={{ left: this.state.iconLeft }} />
                 </Header>
                 {/* 页面主体内容 */}
                 <Layout className="mainContent">

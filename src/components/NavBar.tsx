@@ -1,5 +1,7 @@
-/**
- * @description 左侧导航栏组件
+/*
+ * @Date: 2023-12-13 11:17:30
+ * @Description: 左侧导航栏组件
+ * @LastEditTime: 2023-12-19 18:32:48
  */
 import * as React from 'react'
 import { Menu, MenuProps } from 'antd'
@@ -30,7 +32,20 @@ export default function NavBar(props: any) {
         if (location.pathname === '/') {
             navigate('/home')
         }
+        // 获取当前选中的menu item
+        getSelectedMenu()
     }, [location.pathname])
+    // 动态计算icon定位元素的left数据
+    const getSelectedMenu = () => {
+        let iconLeft = 0
+        // 获取当前选中的menu item
+        const menuSelected = document.getElementsByClassName('ant-menu-item-selected')[0]
+        // 获取该元素到浏览器可视范围的距离
+        const rect = menuSelected.getBoundingClientRect()
+        // 动态计算icon的left值
+        iconLeft = rect.left + (rect.width - 14) / 2
+        props.menuChange(iconLeft) // 将数据传递到父组件
+    }
     // 点击左侧菜单 进行路由跳转
     const onclick = ({ key }) => {
         setMenuSelect(key)
