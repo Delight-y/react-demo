@@ -15,6 +15,44 @@
         color: #fff;
     }
     :hover {
-        background-color: #9B0909;
+        background-color: #9b0909;
+    }
+}
+// 推荐页
+.recommendTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-size: 6000px;
+    background-position: center center;
+}
+.warp {
+    position: relative;
+    width: 982px;
+    height: 285px;
+    margin: 0 66px;
+}
+.recommendCarousel {
+    width: 730px;
+}
+.download {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 254px;
+    height: 285px;
+    background: url('https://s2.music.126.net/style/web2/img/index/download.png');
+}
+.icon {
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+    &:hover {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 20px 0;
+        color: #fff !important;
     }
 }
